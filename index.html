@@ -49,6 +49,14 @@ button.danger{color:var(--danger)}
 .hidden{display:none}
 ul{margin:0;padding-left:20px}
 </style>
+
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#1f8a5b">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+
 </head>
 <body>
 <div class="wrap" id="app"></div>
@@ -161,5 +169,17 @@ ul{margin:0;padding-left:20px}
   if(s&&s.quitTime) dashboard(); else setup();
 })();
 </script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("./service-worker.js")
+      .catch(function (error) {
+        console.error("Service worker registration failed:", error);
+      });
+  });
+}
+</script>
+
 </body>
 </html>
